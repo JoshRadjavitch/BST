@@ -13,7 +13,7 @@ typedef struct BST {
 } Tree;
 
 Tree buildTree();
-Node createNode(int val);
+Node* createNode(int val);
 bool search(Node *root, int val);
 
 int main(int argc, char * argv[]) {
@@ -32,24 +32,25 @@ int main(int argc, char * argv[]) {
     return 0;
 }
 
-Node createNode(int val) {
+Node* createNode(int val) {
     Node *new = (Node *) malloc(sizeof(Node));
     new->value = val;
     new->left = NULL;
     new->right = NULL;
+    return new;
 }
 
 Tree buildTree() {
     Tree *b = (Tree *) malloc(sizeof(Tree));
-    *b->root = createNode(5);
-    *b->root->left = createNode(2);
-    *b->root->left->left = createNode(1);
-    *b->root->left->right = createNode(3);
-    *b->root->right = createNode(12);
-    *b->root->right->left = createNode(9);
-    *b->root->right->right = createNode(21);
-    *b->root->right->right->left = createNode(19);
-    *b->root->right->right->right = createNode(25);
+    b->root = createNode(5);
+    b->root->left = createNode(2);
+    b->root->left->left = createNode(1);
+    b->root->left->right = createNode(3);
+    b->root->right = createNode(12);
+    b->root->right->left = createNode(9);
+    b->root->right->right = createNode(21);
+    b->root->right->right->left = createNode(19);
+    b->root->right->right->right = createNode(25);
     return *b;
 }
 
